@@ -2,16 +2,17 @@
 
 import { ArrowDownIcon } from "@/public/svg-icons/arrow-down-icon";
 import { KILOGRAM, PERCENTAGE, UNDEFINED_STRING, USD } from "@/type/constant";
-import { ContinentRecord } from "@/type/interface";
+import { ContinentRecord, CountryTradingData } from "@/type/interface";
 import { FlagIcon } from "react-flag-kit";
 import Table from "../components/table";
+import { InfoIcon } from "@/public/svg-icons/info-icon";
 
 type TradingTableProps = {
   data: ContinentRecord[];
 };
 
 type rowData = {
-  country: string;
+  country: CountryTradingData;
   area: string;
   proportion?: string;
   shipments?: string;
@@ -25,6 +26,12 @@ const tableColumns = [
   {
     header: 'Country',
     accessorKey: 'country',
+    cell: ({ cell, row }: any) => {
+      return <div className="flex items-center space-x-1">
+              <FlagIcon code={row.original.country.countryCode}/>
+              <div>{row.original.country.countryName}</div>
+            </div>
+    }
   },
   {
     header: 'Area',
@@ -55,7 +62,7 @@ const tableColumns = [
 const rowData = data.map((continentRecord) => {
   return continentRecord.countriesData.map((countryData) => {
     return {
-      country: countryData.countryName,
+      country: countryData,
       area: continentRecord.continentName,
       proportion: countryData.proportion || UNDEFINED_STRING,
       shipments: countryData.shipments?.toLocaleString() || UNDEFINED_STRING,
@@ -68,8 +75,11 @@ const rowData = data.map((continentRecord) => {
 
   return (
     <div className="flex flex-col bg-white p-4 space-y-6">
-      <div className="flex justify-between">
-        <div className="text-xl md:text-2xl text-black font-semibold capitalize">trade country table data</div>
+      <div className="flex flex-col items-center md:flex-row md:justify-between">
+        <div className="flex space-x-1">
+          <div className="text-xl md:text-2xl text-black font-semibold capitalize">trade country table data</div>
+          <InfoIcon/>
+        </div>
         <button className="border border-gray-500 bg-transparent text-gray-500 px-2 rounded-md">
           <div className="flex uppercase space-x-2">
             <div>export</div>

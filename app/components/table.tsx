@@ -2,6 +2,7 @@
 
 import { ArrowBackIcon } from '@/public/svg-icons/arrow-back-icon';
 import { ArrowForwardIcon } from '@/public/svg-icons/arrow-forward-icon';
+import { SortingIcon } from '@/public/svg-icons/sorting-icon';
 import {
   flexRender,
   getCoreRowModel,
@@ -13,12 +14,12 @@ import {
 } from '@tanstack/react-table'
 import { useState } from 'react'
 
-type Tablerops = {
+type TableProps = {
   data: any;
   columns: any[];
 }
 
-const Table: React.FC<Tablerops> = ({ data, columns }) => {
+const Table: React.FC<TableProps> = ({ data, columns }) => {
 
   const [sorting, setSorting] = useState<SortingState>([])
   const [pagination, setPagination] = useState<PaginationState>({pageIndex: 0, pageSize: 5});
@@ -37,10 +38,17 @@ const Table: React.FC<Tablerops> = ({ data, columns }) => {
     onPaginationChange: setPagination,
   })
 
+  function onChangePageSize(event:any) {
+    const pageSize = Number(event.target.value);
+
+    setPagination({ pageIndex: 0, pageSize })
+  }
+   
+
   return (
     <div>
       <table className='w-full table-fixed'>
-        <thead className="bg-gray-200 text-black">
+        <thead className="bg-gray-100 text-black">
           {table.getHeaderGroups().map(headerGroup => (
             <tr key={headerGroup.id} className="h-12">
               {headerGroup.headers.map(header => (
@@ -50,7 +58,8 @@ const Table: React.FC<Tablerops> = ({ data, columns }) => {
                   onClick={header.column.getToggleSortingHandler()}
                 >
                   {header.isPlaceholder ? null : (
-                    <div>
+                    <div className='flex'>
+                      <div>
                       {flexRender(
                         header.column.columnDef.header,
                         header.getContext()
@@ -58,6 +67,8 @@ const Table: React.FC<Tablerops> = ({ data, columns }) => {
                       {
                         header.column.getIsSorted() ? (header.column.getIsSorted() === 'asc' ? '' : '') : null
                       }
+                      </div>
+                      <SortingIcon/>
                     </div>
                   )}
                 </th>
@@ -81,7 +92,20 @@ const Table: React.FC<Tablerops> = ({ data, columns }) => {
           ))}
         </tbody>
       </table>
-      <div className='mt-4 flex justify-end'>
+      <div className='mt-4 flex justify-between md:justify-end md: space-x-8 lg:space-x-12'>
+        <div className='flex md:space-x-1'>
+          <label className='text-gray-500'>Rows per page:</label>
+          <select id="rowsPerPage" className='text-gray-500' onChange={onChangePageSize}>
+            <option value="5">5</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+      
+        <div className='text-gray-500'>
+          {pagination.pageIndex + 1} of {table.getPageCount()}
+        </div>
+
+        <div className='flex md:space-x-4'>
         <button
           disabled={!table.getCanPreviousPage()}
           onClick={() => table.previousPage()}
@@ -94,6 +118,7 @@ const Table: React.FC<Tablerops> = ({ data, columns }) => {
         >
           <ArrowForwardIcon/>
         </button>
+        </div>
       </div>
     </div>
   )
