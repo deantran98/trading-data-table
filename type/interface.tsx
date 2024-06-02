@@ -1,17 +1,17 @@
-import { FlagIconCode } from "react-flag-kit";
+import { FlagIconCode } from 'react-flag-kit'
 
 export interface CountryTradingData {
-  countryName: string;
-  countryCode: FlagIconCode;
-  proportion?: number;
-  shipments?: number;
-  weight?: number;
-  teu?: number;
-  value?: number;
+  countryName: string
+  countryCode: FlagIconCode
+  proportion?: number
+  shipments?: number
+  weight?: number
+  teu?: number
+  value?: number
 }
 
 export interface ContinentRecord {
-  continentName: string;
-  percentageValue: number;
-  countriesData: CountryTradingData[];
-};
+  continentName: string
+  percentageValue: number
+  countriesData: CountryTradingData[]
+}

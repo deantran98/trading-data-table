@@ -1,7 +1,5 @@
-import TradingView from "./trading-view/page";
+import TradingView from './trading-view/page'
 
-export default function Home() {  
-  return (
-      <TradingView />
-  );
+export default function Home() {
+  return <TradingView />
 }

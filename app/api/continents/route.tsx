@@ -1,11 +1,11 @@
-import { CountryTradingData } from "@/type/interface";
-import { NextResponse } from "next/server";
+import { CountryTradingData } from '@/type/interface'
+import { NextResponse } from 'next/server'
 
 type ContinentRecord = {
-  continentName: string;
-  percentageValue: number;
-  countriesData: CountryTradingData[];
-};
+  continentName: string
+  percentageValue: number
+  countriesData: CountryTradingData[]
+}
 
 export async function GET(req: Request) {
   const continentsData: ContinentRecord[] = [
@@ -65,45 +65,45 @@ export async function GET(req: Request) {
       percentageValue: 2.62,
       countriesData: [
         {
-          countryName: 'Norway', 
+          countryName: 'Norway',
           shipments: 7632,
-          countryCode: "NO",
+          countryCode: 'NO',
           proportion: 3.33,
           weight: 1109,
           teu: 10,
           value: undefined,
         },
         {
-          countryName: 'Romania', 
+          countryName: 'Romania',
           shipments: 2290,
-          countryCode: "RO",
+          countryCode: 'RO',
           proportion: 4.12,
           weight: 3121,
           teu: 12,
           value: undefined,
         },
         {
-          countryName: 'Italy', 
+          countryName: 'Italy',
           shipments: 1692,
-          countryCode: "IT",
+          countryCode: 'IT',
           proportion: 10.12,
           weight: 1967,
           teu: 1,
           value: undefined,
         },
         {
-          countryName: 'Croatia', 
+          countryName: 'Croatia',
           shipments: 696,
-          countryCode: "HR",
+          countryCode: 'HR',
           proportion: 2.22,
           weight: 234,
           teu: 1,
           value: undefined,
         },
         {
-          countryName: 'Hungary', 
+          countryName: 'Hungary',
           shipments: 513,
-          countryCode: "HU",
+          countryCode: 'HU',
           proportion: 2.09,
           weight: 190,
           teu: 3,
@@ -116,45 +116,45 @@ export async function GET(req: Request) {
       percentageValue: 2.85,
       countriesData: [
         {
-          countryName: 'Chile', 
+          countryName: 'Chile',
           shipments: 7545,
-          countryCode: "CL",
+          countryCode: 'CL',
           proportion: 8.06,
           weight: 6568,
           teu: 24,
           value: undefined,
         },
         {
-          countryName: 'Peru', 
+          countryName: 'Peru',
           shipments: 1689,
-          countryCode: "PE",
+          countryCode: 'PE',
           proportion: 7.78,
           weight: 1560,
           teu: 19,
           value: undefined,
         },
         {
-          countryName: 'Colombia', 
+          countryName: 'Colombia',
           shipments: 1401,
-          countryCode: "CO",
+          countryCode: 'CO',
           proportion: 11.12,
           weight: 992,
           teu: 16,
           value: undefined,
         },
         {
-          countryName: 'Ecuador', 
+          countryName: 'Ecuador',
           shipments: 663,
-          countryCode: "EC",
+          countryCode: 'EC',
           proportion: 9.22,
           weight: 540,
           teu: 5,
           value: undefined,
         },
         {
-          countryName: 'Brazil', 
+          countryName: 'Brazil',
           shipments: 433,
-          countryCode: "BR",
+          countryCode: 'BR',
           proportion: 4.55,
           weight: 289,
           teu: 24,
@@ -167,18 +167,18 @@ export async function GET(req: Request) {
       percentageValue: 1.47,
       countriesData: [
         {
-          countryName: 'Guatemala', 
+          countryName: 'Guatemala',
           shipments: 2155,
-          countryCode: "GT",
+          countryCode: 'GT',
           proportion: 13.12,
           weight: 2118,
           teu: 8,
           value: undefined,
         },
         {
-          countryName: 'Honduras', 
+          countryName: 'Honduras',
           shipments: 1910,
-          countryCode: "HN",
+          countryCode: 'HN',
           proportion: 9.09,
           weight: 1596,
           teu: 15,
@@ -187,25 +187,25 @@ export async function GET(req: Request) {
         {
           countryName: 'Dominican',
           shipments: 1866,
-          countryCode: "DO",
+          countryCode: 'DO',
           proportion: 6.09,
           weight: 1705,
           teu: 11,
           value: undefined,
         },
         {
-          countryName: 'Nicarague', 
+          countryName: 'Nicarague',
           shipments: 1089,
-          countryCode: "NI",
+          countryCode: 'NI',
           proportion: 3.09,
           weight: 787,
           teu: 7,
           value: undefined,
         },
         {
-          countryName: 'Haiti', 
+          countryName: 'Haiti',
           shipments: 756,
-          countryCode: "HT",
+          countryCode: 'HT',
           proportion: 2.78,
           weight: 575,
           teu: 12,
@@ -218,45 +218,45 @@ export async function GET(req: Request) {
       percentageValue: 0.89,
       countriesData: [
         {
-          countryName: 'Nigeria', 
+          countryName: 'Nigeria',
           shipments: 1863,
-          countryCode: "NG",
+          countryCode: 'NG',
           proportion: 6.12,
           weight: 1309,
           teu: 12,
           value: undefined,
         },
         {
-          countryName: 'Lesotho', 
+          countryName: 'Lesotho',
           shipments: 812,
-          countryCode: "LS",
+          countryCode: 'LS',
           proportion: 8.88,
           weight: 665,
           teu: 6,
           value: undefined,
         },
         {
-          countryName: 'South Africa', 
+          countryName: 'South Africa',
           shipments: 766,
-          countryCode: "ZA",
+          countryCode: 'ZA',
           proportion: 4.67,
           weight: 370,
           teu: 3,
           value: undefined,
         },
         {
-          countryName: 'Morocco', 
+          countryName: 'Morocco',
           shipments: 146,
-          countryCode: "MA",
+          countryCode: 'MA',
           proportion: 1.01,
           weight: 85,
           teu: 2,
           value: undefined,
         },
         {
-          countryName: 'Namibia', 
+          countryName: 'Namibia',
           shipments: 88,
-          countryCode: "NA",
+          countryCode: 'NA',
           proportion: 1.02,
           weight: 123,
           teu: 6,
@@ -264,7 +264,7 @@ export async function GET(req: Request) {
         },
       ],
     },
-  ];
+  ]
 
-  return NextResponse.json(continentsData);
+  return NextResponse.json(continentsData)
 }
