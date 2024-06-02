@@ -1,9 +1,9 @@
 'use client'
 
-import { ContinentRecord } from '@/type/interface'
+import { ContinentRecord, CountryMapData } from '@/type/interface'
 import ContinentCard from '../components/continent-card'
 import { useState } from 'react'
-import { USD } from '@/type/constant'
+import { UNDEFINED_STRING, USD } from '@/type/constant'
 import { UnitType } from '@/type/enum'
 import dynamic from 'next/dynamic'
 
@@ -17,6 +17,22 @@ type TradingAreaProps = {
 
 export default function TradingArea({ data }: TradingAreaProps) {
   const [selectedUnit, setSelectedUnit] = useState<UnitType>(UnitType.Shipments)
+
+  const mapData = data
+    .map((continentRecord) => {
+      return continentRecord.countriesData.map((countryData) => {
+        return {
+          country: countryData,
+          proportion: countryData.proportion || UNDEFINED_STRING,
+          shipments:
+            countryData.shipments?.toLocaleString() || UNDEFINED_STRING,
+          weights: countryData.weight?.toLocaleString() || UNDEFINED_STRING,
+          teu: countryData.teu || UNDEFINED_STRING,
+          value: countryData.value || UNDEFINED_STRING,
+        } as CountryMapData
+      })
+    })
+    .flat()
 
   return (
     <div className="flex flex-col space-y-6 bg-white p-6">
@@ -58,7 +74,7 @@ export default function TradingArea({ data }: TradingAreaProps) {
       </div>
 
       <div className="flex self-center">
-        <ContinentsMap />
+        <ContinentsMap data={mapData} unit={selectedUnit} />
       </div>
 
       <div className="flex flex-col items-center space-y-4 lg:flex-row lg:space-x-4 lg:space-y-0">

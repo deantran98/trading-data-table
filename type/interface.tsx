@@ -15,3 +15,12 @@ export interface ContinentRecord {
   percentageValue: number
   countriesData: CountryTradingData[]
 }
+
+export interface CountryMapData {
+  country: CountryTradingData
+  proportion: string
+  shipments: string
+  weights: string
+  teu: string
+  value: string
+}
